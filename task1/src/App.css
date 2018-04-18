@@ -1,0 +1,22 @@
+.App {
+}
+
+.App-body {
+  margin: 20px;
+}
+
+.App-buttonbar {
+  margin: 10px;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #2F4F4F;
+  height: 50px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
