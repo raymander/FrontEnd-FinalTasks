@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import './App.css';
 
 class Traininglist extends Component {
   state = { trainings: [] };
@@ -11,11 +12,11 @@ class Traininglist extends Component {
 
   //getting API
   loadTrainings = () => {
-    fetch('https://customerrest.herokuapp.com/api/trainings')
+    fetch('https://customerrest.herokuapp.com/gettrainings')
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
-        trainings: responseData.content,
+        trainings: responseData,
       });
     })
   }
@@ -24,7 +25,9 @@ class Traininglist extends Component {
   render() {
     return (
       <div className="App-body">
-
+        <header className="List-header">
+          <h1 className="List-title">Our trainings</h1>
+        </header>
         <ReactTable
         defaultPageSize={10}
         pageSizeOptions={[5,10,15,20]}
@@ -47,6 +50,11 @@ class Traininglist extends Component {
                 {
                   Header: "Date",
                   accessor: "date",
+                },
+                {
+                  id: "customerName",
+                  Header: "Customer",
+                  accessor: "customer.lastname",
                 }
               ]
             }

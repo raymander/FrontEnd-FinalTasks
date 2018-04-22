@@ -1,3 +1,6 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js");
+
 .App {
 }
 
@@ -11,12 +14,24 @@
 
 .App-header {
   text-align: center;
-  background-color: #2F4F4F;
-  height: 50px;
-  padding: 20px;
+  background-color: #4169E1;
+  padding: 13px;
   color: white;
+  border-bottom: 10px solid DarkGray;
 }
 
 .App-title {
+  font-size: 1.8em;
+}
+
+.List-title {
   font-size: 1.5em;
+}
+
+.List-header {
+  text-align: center;
+  background-color: #6495ED;
+  padding: 10px;
+  color: white;
+  border: 5px solid Silver;
 }
