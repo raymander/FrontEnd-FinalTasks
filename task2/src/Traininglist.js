@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { ToastContainer, toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import { ToastContainer, toast } from 'react-toastify';
 import './App.css';
 
-class Traininglist extends Component {
-  state = { trainings: [] };
+import AddTraining from './AddTraining';
+
+
+class TrainingList extends Component {
+  state = { trainings: []};
 
   componentDidMount() {
     this.loadTrainings();
   }
 
-  //getting API
   loadTrainings = () => {
     fetch('https://customerrest.herokuapp.com/gettrainings')
     .then((response) => response.json())
@@ -21,91 +23,104 @@ class Traininglist extends Component {
       this.setState({
         trainings: responseData,
       });
+  });
+  }
+
+  //add training
+    addTraining(training) {
+      fetch('https://customerrest.herokuapp.com/api/trainings/',
+      {   method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(training)
+      })
+      .then(res => this.loadTrainings())
+      .catch(err => console.error(err))
+    }
+
+
+  // delete training
+  onDelClick = (idLink) => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure you want to delete?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick:() => {
+            fetch(`https://customerrest.herokuapp.com/api/trainings/${idLink}`, {method: 'DELETE'})
+          .then(res => this.loadTrainings())
+          .catch(err => console.error(err))
+
+          toast.success("Delete succeed", {
+            position: toast.POSITION.BOTTOM_LEFT
+          });
+          }
+        },
+        {
+          label: 'No',
+        }
+      ]
     })
   }
 
-  // Delete training
-  onDelete = (idLink) => {
-        confirmAlert({
-        title: 'Confirm to submit',
-        message: 'Are you sure to do this?',
-        buttons: [
+  render() {
+    return(
+    <div className="App-body">
+    <div className="row">
+      <AddTraining
+        addTraining={this.addTraining}
+        loadTrainings={this.loadTrainings}
+      />
+      </div>
+      <ReactTable data={this.state.trainings}
+        columns={[
           {
-            label: 'Yes',
-            onClick: () => {
-              console.log('dfs')
-                fetch('https://customerrest.herokuapp.com/api/gettrainings/' + idLink, {method: 'DELETE'})
-                .then(res => this.loadTrainings())
-                .catch(err => console.error(err))
-
-                toast.success("Delete succeed", {
-                  position: toast.POSITION.BOTTOM_LEFT
-                });
-                console.log('ops')
+            Header: 'Activity',
+            accessor: 'activity'
+          },
+          {
+            Header: 'Duration',
+            accessor: 'duration'
+          },
+          {
+            id: 'date',
+            Header: "Date",
+            accessor: d => {
+            let date = new Date(d.date)
+            let day = date.getDate();
+            let month = date.getMonth() +1;
+            let year = date.getFullYear();
+            date = (new Date(year, month, day)).toISOString().split('T')[0]
+            return date
             }
           },
           {
-            label: 'No',
-          }
-        ]
-      })
-   }
-
-// rendering with React Table
-  render() {
-    return (
-      <div className="App-body">
-        <header className="List-header">
-          <h1 className="List-title">Our trainings</h1>
-        </header>
-        <ReactTable
-        defaultPageSize={10}
-        pageSizeOptions={[5,10,15,20]}
-        data={this.state.trainings}
-        columns={[
-            {
-              columns: [
-                {
-                  accessor: "_links.self.href",
-                  show: false
-                },
-                {
-                  Header: "Activity",
-                  accessor: "activity",
-                },
-                {
-                  Header: "Duration",
-                  accessor: "duration",
-                },
-                {
-                  Header: "Date",
-                  accessor: "date",
-                },
-                {
-                  id: "customerName",
-                  Header: "Customer",
-                  accessor: "customer.lastname",
-                },
-                {
-                  id: 'button',
-                  sortable: false,
-                  filterable: false,
-                  width: 100,
-                  accessor: '_links.self.href',
-                  Cell: (props) => (
-                    <button className="btn btn-danger" onClick={this.onDelete.bind(this,props.value)}>
-                      Delete
-                    </button>)
-                }
-              ]
+            id: "customerName",
+            Header: "Customer",
+            accessor: d => {
+            if (d.customer != null) {
+            return d.customer.firstname + ' ' + d.customer.lastname
+            } else return (d.customer)
             }
-          ]}
-          filterable
-          className="-highlight" >
-        </ReactTable>
-      </div>
-    );
+          },
+          {
+            id: 'button',
+            sortable: false,
+            filterable: false,
+            width: 100,
+            accessor: 'id',
+            Cell: ({value}) => (<button className="btn btn-danger" onClick={()=>{this.onDelClick(value)}}>Delete</button>)
+          }
+        ]}
+
+        filterable
+        className="-highlight" >
+      </ReactTable>
+
+    </div>
+);
   }
 }
-
-export default Traininglist;
+export default TrainingList;

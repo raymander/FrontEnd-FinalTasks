@@ -34,36 +34,36 @@ class AddCustomer extends React.Component {
       <div>
         <SkyLight dialogStyles={addCustomerDialog} hideOnOverlayClicked ref="simpleDialog">
               <div className="card" style={{"width": "95%"}}>
-              <div className="card-body">
-              <h5 className="card-title">New customer</h5>
-              <form>
-                  <div className="form-group">
-                      <input type="text" placeholder="Firstname" className="form-control" name="firstname" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="Lastname" className="form-control" name="lastname" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="Email" className="form-control" name="email" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="Phone" className="form-control" name="phone" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="Street address" className="form-control" name="streetaddress" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="Postcode" className="form-control" name="postcode" onChange={this.handleChange}/>
-                  </div>
-                  <div className="form-group">
-                      <input type="text" placeholder="City" className="form-control" name="city" onChange={this.handleChange}/>
-                  </div>
+                <div className="card-body">
+                  <h5 className="card-title">New customer</h5>
+                  <form>
+                      <div className="form-group">
+                          <input type="text" placeholder="Firstname" className="form-control" name="firstname" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="Lastname" className="form-control" name="lastname" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="Email" className="form-control" name="email" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="Phone" className="form-control" name="phone" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="Street address" className="form-control" name="streetaddress" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="Postcode" className="form-control" name="postcode" onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="text" placeholder="City" className="form-control" name="city" onChange={this.handleChange}/>
+                      </div>
 
-                  <div className="form-group">
-                      <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
-                  </div>
-              </form>
-              </div>
+                      <div className="form-group">
+                          <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
+                      </div>
+                  </form>
+                </div>
               </div>
         </SkyLight>
         <div className="col-md-2">

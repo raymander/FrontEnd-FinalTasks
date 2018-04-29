@@ -47,7 +47,6 @@ class Customerlist extends Component {
           {
             label: 'Yes',
             onClick: () => {
-              console.log('dfs')
                 fetch(idLink, {method: 'DELETE'})
                 .then(res => this.loadCustomers())
                 .catch(err => console.error(err))
@@ -55,7 +54,6 @@ class Customerlist extends Component {
                 toast.success("Delete succeed", {
                   position: toast.POSITION.BOTTOM_LEFT
                 });
-                console.log('ops')
             }
           },
           {
@@ -118,11 +116,8 @@ class Customerlist extends Component {
                   sortable: false,
                   filterable: false,
                   width: 100,
-                  accessor: '_links.self.href',
-                  Cell: (props) => (
-                    <button className="btn btn-danger" onClick={this.onDelete.bind(this,props.value)}>
-                      Delete
-                    </button>)
+                  accessor: 'links[0].href',
+                  Cell: ({value}) => (<button className="btn btn-danger" onClick={()=>{this.onDelete(value)}}>Delete</button>)
                 }
               ]
             }
