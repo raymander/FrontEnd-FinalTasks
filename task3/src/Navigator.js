@@ -29,6 +29,9 @@ class Navigator extends Component {
                 <Link class="nav-link"to="/trainings">Trainings</Link>
               </li>
               <li class="nav-item">
+                <Link class="nav-link"to="/calendar">Calendar</Link>
+              </li>
+              <li class="nav-item">
                 {logLink}
               </li>
             </ul>

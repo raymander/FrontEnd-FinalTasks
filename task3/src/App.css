@@ -35,3 +35,8 @@
   color: white;
   border: 5px solid Silver;
 }
+
+.Calendar {
+  min-height: 700px;
+  margin:50px;
+}

@@ -4,6 +4,7 @@ import Customerlist from './Customerlist';
 import Traininglist from './Traininglist';
 import Navigator from './Navigator';
 import Login from './Login';
+import Calendar from './Calendar';
 import { firebaseAuth } from './config';
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 
@@ -49,6 +50,7 @@ class App extends Component {
            <Switch>
               <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/trainings" component={Traininglist} />
               <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/calendar" component={Calendar} />
               <Route path="/login" component={Login} />
            </Switch>
         </div>

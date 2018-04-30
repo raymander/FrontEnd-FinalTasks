@@ -9,7 +9,6 @@ import './App.css';
 
 import AddTraining from './AddTraining';
 
-
 class TrainingList extends Component {
   state = { trainings: []};
 
@@ -121,7 +120,7 @@ class TrainingList extends Component {
       </ReactTable>
       <ToastContainer autoClose={2000}/>
     </div>
-);
+    );
   }
 }
 export default TrainingList;
