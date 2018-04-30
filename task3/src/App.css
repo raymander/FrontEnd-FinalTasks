@@ -23,6 +23,14 @@
 .App-title {
   font-size: 1.8em;
 }
+.welcome {
+  margin-left: 18px;
+}
+
+.Welcome-msg {
+  font-size: 15px;
+  color: #555;
+}
 
 .List-title {
   font-size: 1.5em;
@@ -36,7 +44,7 @@
   border: 5px solid Silver;
 }
 
-.Calendar {
+.calendar {
   min-height: 700px;
   margin:50px;
 }

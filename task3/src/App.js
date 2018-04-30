@@ -24,16 +24,18 @@ const PrivateRoute = ({ component: Component, ...rest, isAuthenticated }) => (
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {user: null, isAuthenticated : false};
+    this.state = {user: null, isAuthenticated : false, userEmail: ''};
   }
 
   componentDidMount() {
     firebaseAuth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
-        this.setState({ user: user, isAuthenticated: true });
+        this.setState({ user: user, isAuthenticated: true, userEmail: user.email });
+        console.log('ok')
       }
       else {
         this.setState({ user: null, isAuthenticated: false });
+        console.log('not ok')
       }
     });
   }
@@ -44,6 +46,9 @@ class App extends Component {
       <header className="App-header">
         <h1 className="App-title">Our gym</h1>
       </header>
+      <div className="welcome">
+        <h3 className="Welcome-msg">Welcome {this.state.userEmail}! </h3>
+      </div>
       <BrowserRouter>
         <div>
           <Navigator isAuthenticated={this.state.isAuthenticated} />

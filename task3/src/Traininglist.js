@@ -27,7 +27,7 @@ class TrainingList extends Component {
   }
 
   //add training
-    addTraining(training) {
+  addTraining(training) {
       fetch('https://customerrest.herokuapp.com/api/trainings/',
       {   method: 'POST',
           headers: {
