@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import 'react-table/react-table.css';
@@ -51,7 +52,7 @@ class Customerlist extends Component {
                 .then(res => this.loadCustomers())
                 .catch(err => console.error(err))
 
-                toast.success("Delete succeed", {
+                toast.warn("Delete succeed", {
                   position: toast.POSITION.BOTTOM_LEFT
                 });
             }

@@ -4,6 +4,7 @@ import 'react-table/react-table.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import AddTraining from './AddTraining';
@@ -53,7 +54,7 @@ class TrainingList extends Component {
           .then(res => this.loadTrainings())
           .catch(err => console.error(err))
 
-          toast.success("Delete succeed", {
+          toast.warn("Delete succeed", {
             position: toast.POSITION.BOTTOM_LEFT
           });
           }
@@ -118,7 +119,7 @@ class TrainingList extends Component {
         filterable
         className="-highlight" >
       </ReactTable>
-
+      <ToastContainer autoClose={2000}/>
     </div>
 );
   }
