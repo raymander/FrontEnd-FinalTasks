@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import AddTraining from './AddTraining';
+import Bar from './uiComponents/Bar'
 
 class TrainingList extends Component {
   state = { trainings: []};
@@ -68,6 +69,9 @@ class TrainingList extends Component {
   render() {
     return(
     <div className="App-body">
+    <Bar
+     title = 'Our trainings'
+    />
     <div className="row">
       <AddTraining
         addTraining={this.addTraining}

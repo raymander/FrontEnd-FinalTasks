@@ -58,7 +58,6 @@ class AddCustomer extends React.Component {
                       <div className="form-group">
                           <input type="text" placeholder="City" className="form-control" name="city" onChange={this.handleChange}/>
                       </div>
-
                       <div className="form-group">
                           <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
                       </div>
@@ -67,7 +66,7 @@ class AddCustomer extends React.Component {
               </div>
         </SkyLight>
         <div className="col-md-2">
-            <button style={{'margin': '10px'}} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>New customer</button>
+          <button style={{'margin': '10px'}} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>New customer</button>
         </div>
       </div>
     );

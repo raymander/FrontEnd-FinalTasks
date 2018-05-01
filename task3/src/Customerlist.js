@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import 'react-table/react-table.css';
 import './App.css';
 import AddCustomer from './AddCustomer';
+import Bar from './uiComponents/Bar'
 
 class Customerlist extends Component {
   state = { customers: [] };
@@ -67,9 +68,9 @@ class Customerlist extends Component {
   render() {
     return (
       <div className="App-body">
-        <header className="List-header">
-          <h1 className="List-title">Our customers</h1>
-        </header>
+        <Bar
+         title = 'Our customers'
+        />
         <div className="row">
           <AddCustomer addCustomer={this.addCustomer} loadCustomers={this.loadCustomers} />
         </div>

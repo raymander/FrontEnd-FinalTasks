@@ -9,11 +9,6 @@ class Navigator extends Component {
   }
 
   render() {
-    let logLink = null;
-    if (this.props.isAuthenticated)
-      logLink = <Link className="nav-link" onClick={this.logout} to="/login">Logout</Link>;
-    else
-      logLink = <Link className="nav-link" to="/login">Login</Link>;
 
     return (
       <nav class="navbar navbar-default">
@@ -30,9 +25,6 @@ class Navigator extends Component {
               </li>
               <li class="nav-item">
                 <Link class="nav-link"to="/calendar">Calendar</Link>
-              </li>
-              <li class="nav-item">
-                {logLink}
               </li>
             </ul>
         </div>

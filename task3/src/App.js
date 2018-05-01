@@ -46,9 +46,16 @@ class App extends Component {
       <header className="App-header">
         <h1 className="App-title">Our gym</h1>
       </header>
-      <div className="welcome">
-        <h3 className="Welcome-msg">Welcome {this.state.userEmail}! </h3>
-      </div>
+      { this.state.isAuthenticated ? (
+          <div className="welcome">
+            <h3 className="Welcome-msg">Welcome {this.state.userEmail}! </h3>
+          </div>
+        ) : (
+          <div className="welcome">
+            <h3 className="Welcome-msg">Please sign in or create a new account </h3>
+          </div>
+        )
+      }
       <BrowserRouter>
         <div>
           <Navigator isAuthenticated={this.state.isAuthenticated} />
