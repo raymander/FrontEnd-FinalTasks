@@ -7,6 +7,12 @@ import { Redirect } from 'react-router-dom';
 class Login extends Component {
   state = { email: '', password: '', redirect: false};
 
+  componentDidUpdate (prevProps, prevState) {
+    if (firebaseAuth().currentUser&&firebaseAuth().currentUser.emailVerified) {
+      this.setState({redirect:true})
+    }
+  }
+
   resetPassword = (event) => {
     event.preventDefault();
 

@@ -35,10 +35,10 @@ class Calendar extends Component {
     for (let i = 0; i < trainings.length; i++) {
       let event = {
         id: i,
-        title: trainings[i].activity,
+        title: trainings[i].activity +', '+ trainings[i].duration + ' minutes',
         start:new Date (moment(trainings[i].date).format('MM/DD/YYYY')),
         end: new Date (moment(trainings[i].date).format('MM/DD/YYYY')),
-        desc:trainings[i].customer.firstname+' '+ trainings[i].customer.lastname +', '+ trainings[i].duration + ' minutes',
+        desc:trainings[i].customer.firstname+' '+ trainings[i].customer.lastname,
       }
       eventsArr.push(event);
     }
