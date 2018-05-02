@@ -7,6 +7,8 @@ import Login from './Login';
 import Calendar from './Calendar';
 import { firebaseAuth } from './config';
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
+import TabsRouter from './uiComponents/TabsRouter'
+import FlatButton from 'material-ui/FlatButton';
 
 const PrivateRoute = ({ component: Component, ...rest, isAuthenticated }) => (
   <Route {...rest} render={props => (
@@ -26,6 +28,11 @@ class App extends Component {
     super(props);
     this.state = {user: null, isAuthenticated : false, userEmail: ''};
   }
+
+  logout = () => {
+    firebaseAuth().signOut();
+    return (<Redirect to='/login' />)
+  };
 
   componentDidMount() {
     firebaseAuth().onAuthStateChanged((user) => {
@@ -56,17 +63,22 @@ class App extends Component {
           </div>
         )
       }
-      <BrowserRouter>
-        <div>
-          <Navigator isAuthenticated={this.state.isAuthenticated} />
-           <Switch>
-              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/trainings" component={Traininglist} />
-              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
-              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/calendar" component={Calendar} />
-              <Route path="/login" component={Login} />
-           </Switch>
+        <div className = 'row'>
+          <FlatButton
+            label="SIGN OUT"
+            onClick={() => { this.logout(); }}
+          />
         </div>
-      </BrowserRouter>
+        <BrowserRouter>
+          <div>
+            <TabsRouter
+            />
+            <Switch>
+               <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
+               <Route path="/login" component={Login} />
+            </Switch>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }

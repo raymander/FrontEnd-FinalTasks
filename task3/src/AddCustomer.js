@@ -1,10 +1,11 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
+import Snackbar from 'material-ui/Snackbar';
 
 class AddCustomer extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {firstname: '', lastname: '',  phone: '', email: '', streetaddress: '', postcode: '', city: ''};
+      this.state = {firstname: '', lastname: '',  phone: '', email: '', streetaddress: '', postcode: '', city: '', open: false};
   }
 
   handleChange = (event) => {
@@ -19,7 +20,16 @@ class AddCustomer extends React.Component {
       this.props.addCustomer(newCustomer);
       this.props.loadCustomers();
       this.refs.simpleDialog.hide();
+      this.setState({
+        open: true,
+      })
   }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
 
@@ -32,7 +42,10 @@ class AddCustomer extends React.Component {
 
     return (
       <div>
-        <SkyLight dialogStyles={addCustomerDialog} hideOnOverlayClicked ref="simpleDialog">
+        <SkyLight
+          dialogStyles={addCustomerDialog}
+          hideOnOverlayClicked ref="simpleDialog"
+        >
               <div className="card" style={{"width": "95%"}}>
                 <div className="card-body">
                   <h5 className="card-title">New customer</h5>
@@ -67,6 +80,14 @@ class AddCustomer extends React.Component {
         </SkyLight>
         <div className="col-md-2">
           <button style={{'margin': '10px'}} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>New customer</button>
+        </div>
+        <div>
+          <Snackbar
+            open={this.state.open}
+            message="New customer added"
+            autoHideDuration={3000}
+            onRequestClose={this.handleRequestClose}
+            />
         </div>
       </div>
     );

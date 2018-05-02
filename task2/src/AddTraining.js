@@ -23,7 +23,7 @@ class AddTraining extends React.Component {
 
   render() {
 
-    const addCustomerDialog = {
+    const addTrainingDialog = {
       width: '70%',
       height: '450px',
       marginTop: '-300px',
@@ -32,7 +32,10 @@ class AddTraining extends React.Component {
 
     return (
       <div>
-        <SkyLight dialogStyles={addCustomerDialog} hideOnOverlayClicked ref="simpleDialog">
+        <SkyLight 
+          dialogStyles={addTrainingDialog}
+          hideOnOverlayClicked ref="simpleDialog"
+        >
               <div className="card" style={{"width": "95%"}}>
                 <div className="card-body">
                   <h5 className="card-title">New training</h5>

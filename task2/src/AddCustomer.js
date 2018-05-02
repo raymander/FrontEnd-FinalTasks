@@ -32,7 +32,10 @@ class AddCustomer extends React.Component {
 
     return (
       <div>
-        <SkyLight dialogStyles={addCustomerDialog} hideOnOverlayClicked ref="simpleDialog">
+        <SkyLight
+          dialogStyles={addCustomerDialog}
+          hideOnOverlayClicked ref="simpleDialog"
+        >
               <div className="card" style={{"width": "95%"}}>
                 <div className="card-body">
                   <h5 className="card-title">New customer</h5>

@@ -1,10 +1,11 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
+import Snackbar from 'material-ui/Snackbar';
 
 class AddTraining extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {activity: '', duration: '',  date: '', customer: ''};
+      this.state = {activity: '', duration: '',  date: '', customer: '', open: false};
   }
 
   handleChange = (event) => {
@@ -19,11 +20,20 @@ class AddTraining extends React.Component {
       this.props.addTraining(newTraining);
       this.props.loadTrainings();
       this.refs.simpleDialog.hide();
+      this.setState({
+        open: true,
+      })
   }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
 
-    const addCustomerDialog = {
+    const addTrainingDialog = {
       width: '70%',
       height: '450px',
       marginTop: '-300px',
@@ -32,7 +42,10 @@ class AddTraining extends React.Component {
 
     return (
       <div>
-        <SkyLight dialogStyles={addCustomerDialog} hideOnOverlayClicked ref="simpleDialog">
+        <SkyLight
+          dialogStyles={addTrainingDialog}
+          hideOnOverlayClicked ref="simpleDialog"
+        >
               <div className="card" style={{"width": "95%"}}>
                 <div className="card-body">
                   <h5 className="card-title">New training</h5>
@@ -59,6 +72,14 @@ class AddTraining extends React.Component {
         </SkyLight>
         <div className="col-md-2">
             <button style={{'margin': '10px'}} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>New training</button>
+        </div>
+        <div>
+          <Snackbar
+            open={this.state.open}
+            message="New training added"
+            autoHideDuration={3000}
+            onRequestClose={this.handleRequestClose}
+            />
         </div>
       </div>
     );

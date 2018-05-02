@@ -3,22 +3,12 @@ import './App.css';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-
-import Bar from './uiComponents/Bar'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends Component {
-  static muiName = 'FlatButton';
 
   constructor(props) {
     super(props);
@@ -62,9 +52,6 @@ class Calendar extends Component {
     } else {
       return (
         <div className="App-body">
-          <Bar
-           title = 'Calendar'
-          />
           <div>
           <BigCalendar
              className="calendar"

@@ -48,14 +48,26 @@ class Traininglist extends Component {
                   accessor: "duration",
                 },
                 {
+                  id: 'date',
                   Header: "Date",
-                  accessor: "date",
+                  accessor: d => {
+                  let date = new Date(d.date)
+                  let day = date.getDate();
+                  let month = date.getMonth() +1;
+                  let year = date.getFullYear();
+                  date = (new Date(year, month, day)).toISOString().split('T')[0]
+                  return date
+                  }
                 },
                 {
                   id: "customerName",
                   Header: "Customer",
-                  accessor: "customer.lastname",
-                }
+                  accessor: d => {
+                  if (d.customer != null) {
+                  return d.customer.firstname + ' ' + d.customer.lastname
+                  } else return (d.customer)
+                  }
+                },
               ]
             }
           ]}

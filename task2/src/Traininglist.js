@@ -69,6 +69,9 @@ class TrainingList extends Component {
   render() {
     return(
     <div className="App-body">
+    <header className="List-header">
+      <h1 className="List-title">Our trainings</h1>
+    </header>
     <div className="row">
       <AddTraining
         addTraining={this.addTraining}
@@ -76,6 +79,8 @@ class TrainingList extends Component {
       />
       </div>
       <ReactTable data={this.state.trainings}
+        defaultPageSize={10}
+        pageSizeOptions={[5,10,15,20]}
         columns={[
           {
             Header: 'Activity',
