@@ -69,16 +69,18 @@ class App extends Component {
           </div>
         )
       }
-        <BrowserRouter>
-          <div>
-            <TabsRouter
-            />
-            <Switch>
-               <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
-               <Route path="/login" component={Login} />
-            </Switch>
-          </div>
-        </BrowserRouter>
+        <div className = "App-body">
+          <BrowserRouter>
+            <div>
+              <TabsRouter
+              />
+              <Switch>
+                 <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
+                 <Route path="/login" component={Login} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </div>
       </div>
     );
   }

@@ -66,6 +66,7 @@ class TabsRouter extends React.Component {
         value={this.state.tabSelected}
         onChange={this.handleChange}
         inkBarStyle={{background: 'blue'}}
+        centered
       >
         <Tab label="Customers" value="/customers" style = {styles.tab}>
           <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={Customerlist} />
