@@ -56,6 +56,12 @@ class App extends Component {
       { this.state.isAuthenticated ? (
           <div className="welcome">
             <h3 className="Welcome-msg">Welcome {this.state.userEmail}! </h3>
+            <FlatButton
+              label="SIGN OUT"
+              onClick={() => { this.logout(); }}
+              labelStyle = {{fontWeight: 'bold', color:'#4169E1' }}
+              style={{float:'right', marginRight: 20, marginTop: 7}}
+            />
           </div>
         ) : (
           <div className="welcome">
@@ -63,12 +69,6 @@ class App extends Component {
           </div>
         )
       }
-        <div className = 'row'>
-          <FlatButton
-            label="SIGN OUT"
-            onClick={() => { this.logout(); }}
-          />
-        </div>
         <BrowserRouter>
           <div>
             <TabsRouter

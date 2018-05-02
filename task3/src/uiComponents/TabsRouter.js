@@ -25,7 +25,7 @@ const styles = {
   tab: {
     fontSize: 18,
     paddingTop: 12,
-    marginBottom: 12,
+    marginBottom: 10,
     fontWeight: 400,
   },
 };

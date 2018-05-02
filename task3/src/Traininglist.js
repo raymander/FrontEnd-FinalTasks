@@ -113,7 +113,7 @@ class TrainingList extends Component {
             filterable: false,
             width: 100,
             accessor: 'id',
-            Cell: ({value}) => (<button className="btn btn-danger" onClick={()=>{this.onDelClick(value)}}>Delete</button>)
+            Cell: ({value}) => (<button className="btn btn-default" onClick={()=>{this.onDelClick(value)}}>Delete</button>)
           }
         ]}
 

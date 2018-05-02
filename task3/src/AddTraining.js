@@ -1,6 +1,7 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class AddTraining extends React.Component {
   constructor(props) {
@@ -71,7 +72,12 @@ class AddTraining extends React.Component {
               </div>
         </SkyLight>
         <div className="col-md-2">
-            <button style={{'margin': '10px'}} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>New training</button>
+            <RaisedButton
+              label="New training"
+              style={{margin: 15}}
+              onClick={() => this.refs.simpleDialog.show()}
+              primary= {true}
+            />
         </div>
         <div>
           <Snackbar

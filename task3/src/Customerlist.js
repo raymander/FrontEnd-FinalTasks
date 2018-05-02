@@ -115,7 +115,7 @@ class Customerlist extends Component {
                   filterable: false,
                   width: 100,
                   accessor: 'links[0].href',
-                  Cell: ({value}) => (<button className="btn btn-danger" onClick={()=>{this.onDelete(value)}}>Delete</button>)
+                  Cell: ({value}) => (<button className="btn btn-default" onClick={()=>{this.onDelete(value)}}>Delete</button>)
                 }
               ]
             }

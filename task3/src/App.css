@@ -17,7 +17,7 @@
   background-color: #4169E1;
   padding: 13px;
   color: white;
-  border-bottom: 10px solid DarkGray;
+  border-bottom: 15px solid #ccc;
 }
 
 .App-title {
@@ -25,11 +25,14 @@
 }
 .welcome {
   margin-left: 18px;
+  display: inline;
 }
 
 .Welcome-msg {
-  font-size: 15px;
+  font-size: 16px;
   color: #555;
+  float: left;
+  margin-left: 15px;
 }
 
 .List-title {
